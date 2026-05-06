@@ -107,3 +107,49 @@ main.js → import('./bootstrap') → bootstrap.js → Vue 实例挂载到 #emp-
 - `empRuntime.runtimeLib` 的 CDN 版本号必须与实际安装的 `@empjs/share` 版本一致（通过 `node_modules/@empjs/share/package.json` 查看实际版本）
 - `shareLib` 中的格式为 `GlobalVar@CDN_URL`，`@` 前是全局变量名，`@` 后是 CDN 地址，插件内部通过正则 `/^([0-9a-zA-Z_\s]+)@(.*)/` 解析，不会被 URL 中的 `@` 干扰
 - 三个应用的 `empRuntime` 配置必须完全一致，否则 CDN 共享依赖可能重复加载
+
+### 非 EMP 应用消费 EMP Remote 时报 `EMP_SHARE_RUNTIME is not defined` 和 `remoteEntryExports is undefined`
+
+**现象**：app-d（Raw Rspack + MF 2.0）通过 Module Federation 加载 app-c（EMP 3.x）的远程组件时，控制台出现两个错误：
+
+```
+1. Uncaught ReferenceError: EMP_SHARE_RUNTIME is not defined
+2. [ Federation Runtime ]: remoteEntryExports is undefined
+```
+
+**根因**：
+
+EMP 3.x 构建产物 `emp.js` 内部依赖两类全局变量：
+
+| 全局变量 | 来源 | emp.js 中的引用 |
+|---------|------|----------------|
+| `EMP_SHARE_RUNTIME` | `@empjs/share` SDK，通过 `empRuntime.runtimeLib` CDN 加载 | `module.exports = EMP_SHARE_RUNTIME.MFRuntime` / `.MFSDK` |
+| `window.Vue` / `window.Vuex` / `window.ELEMENT` | 通过 `empRuntime.shareLib` CDN 加载 | `module.exports = window.Vue` 等 externals |
+
+EMP 应用自身的 HTML 会注入这些 CDN script 标签，所以 app-a/b/c 之间互通没有问题。但 app-d 不使用 EMP CLI 构建，其 HTML 中没有这些 CDN 脚本，导致 MF 2.0 runtime 加载 `emp.js` 时执行失败。
+
+错误链路：`emp.js` 执行 → 引用 `EMP_SHARE_RUNTIME` → ReferenceError → `appC` 全局变量未初始化 → MF 2.0 runtime 获取 `remoteEntryExports` 为 undefined。
+
+**修复**：两步桥接
+
+1. **`index.html`** — 添加 EMP SDK script 标签（必须在 emp.js 被加载前就存在）：
+
+```html
+<script src="https://unpkg.com/@empjs/share@3.13.8/output/sdk.js"></script>
+```
+
+2. **`bootstrap.js`** — 将 npm 安装的包暴露为 window 全局变量，替代 CDN 加载：
+
+```js
+import Vue from 'vue'
+import Vuex from 'vuex'
+import ElementUI from 'element-ui'
+
+window.Vue = Vue
+window.Vuex = Vuex
+window.ELEMENT = ElementUI
+```
+
+**原理**：EMP SDK 提供 `EMP_SHARE_RUNTIME`（federation runtime 层），npm → window 桥接提供框架全局变量。这样 app-c 的 `emp.js` 执行时能找到所有依赖，不需要从 CDN 重复加载 Vue 等库。
+
+**结论**：非 EMP 应用消费 EMP Remote **不能开箱即用**，必须手动桥接 EMP SDK 和共享依赖的全局变量。这是 EMP 在标准 Module Federation 之上增加的 CDN 外部化层导致的额外耦合。
