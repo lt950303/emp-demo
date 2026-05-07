@@ -49,6 +49,108 @@ A 项目在针对某一单个客户的场景下（如客户详情页），需要
 2. **零改造成本**：B 是单租户设计，使用 MF 需要 B 的每个模块都改造为"可接受外部客户上下文"。而 iframe 只需要 SSO + URL 即可，B 基本不需要改造。
 3. **解耦**：iframe 方案下 A 和 B 完全独立演进，不存在版本耦合。
 
+### 2.4 成熟框架选型（增强型 iframe 方案）
+
+原生 iframe 需要手动处理通信、高度自适应、预加载等问题。以下成熟框架在 iframe 基础上提供了工程化封装，可减少重复工作。
+
+#### 2.4.1 候选框架
+
+**Wujie（无界）— 腾讯出品**
+
+核心原理：iframe 做 JS 隔离 + WebComponent 做 DOM 渲染。
+
+```
+传统 iframe：
+┌─ A 页面 ─────────────────────┐
+│  ┌─ iframe ───────────────┐  │  ← 独立渲染上下文，高度/通信都是问题
+│  │  B 页面（完整文档）      │  │
+│  └────────────────────────┘  │
+└──────────────────────────────┘
+
+Wujie：
+┌─ A 页面 ─────────────────────┐
+│  ┌─ WebComponent ─────────┐  │  ← DOM 在 A 的文档流中（高度自适应）
+│  │  B 的 DOM 内容          │  │
+│  └────────────────────────┘  │
+│  ┌─ 隐藏 iframe ──────────┐  │  ← JS 在 iframe 中执行（天然沙箱）
+│  │  B 的 JS 上下文         │  │
+│  └────────────────────────┘  │
+└──────────────────────────────┘
+```
+
+内置能力：
+- 事件总线通信（`$wujie.bus.$emit / $on`），替代手写 postMessage
+- 生命周期钩子（`beforeLoad`、`activated`、`loadError`）
+- 内置 `preloadApp()` 预加载 API
+- `alive` 模式实现 keep-alive
+- 路由同步机制
+- WebComponent Shadow DOM CSS 隔离
+- Vue 2/3 官方组件（`wujie-vue2` / `wujie-vue3`）
+
+使用示例：
+
+```vue
+<WujieVue
+  name="b-dashboard"
+  :url="getBInstanceUrl(currentCustomerId, 'dashboard')"
+  :alive="true"
+  :props="{ token: ssoToken }"
+  @beforeLoad="showLoading"
+  @activated="hideLoading"
+  @loadError="handleError"
+/>
+```
+
+> **跨域限制**：WebComponent 渲染模式在跨域场景下会降级为纯 iframe 模式（`degrade` 模式）。降级后通信、生命周期、预加载等框架能力仍然保留，但高度自适应需要回退到 postMessage 方案。
+
+**Micro App — 京东出品**
+
+从 v1.0 起支持 `iframe` 沙箱模式，思路类似 Wujie。
+
+```vue
+<micro-app
+  name="b-dashboard"
+  :url="getBInstanceUrl(currentCustomerId, 'dashboard')"
+  iframe
+  keep-alive
+/>
+```
+
+内置能力与 Wujie 类似：事件通信、生命周期、预加载、keep-alive。
+
+**Luigi — SAP 出品**
+
+企业级 iframe 编排框架，设计初衷就是通过 iframe 集成独立应用。
+
+特点：
+- 纯 iframe 架构，不做 DOM 代理，跨域行为完全可预测
+- 内置导航管理、权限控制、通信 API
+- 子应用只需引入轻量 `@luigi-project/client` SDK（约 5KB）
+- 企业级场景验证（SAP 自身产品在用）
+- 技术栈无关
+
+#### 2.4.2 框架对比（针对本场景）
+
+| 维度 | Wujie | Micro App | Luigi | 手写 iframe |
+|------|:-----:|:---------:|:-----:|:----------:|
+| B 多版本支持 | 支持 | 支持 | 支持 | 支持 |
+| 跨域支持 | 降级为纯 iframe | 降级为纯 iframe | 原生 iframe | 原生 iframe |
+| B 侧改造量 | 极少 | 极少 | 引入 Client SDK | 手写 postMessage |
+| 通信机制 | 事件总线 | getData/setData | Luigi Client API | 手写 postMessage |
+| 高度自适应 | 同域自动 / 跨域手动 | 同域自动 / 跨域手动 | 需配置 | 手动 |
+| 预加载 | 内置 | 内置 | 内置 | 手动 |
+| keep-alive | 内置 | 内置 | 内置 | 手动 |
+| 生态 / 文档 | 中文生态好 | 中文生态好 | 英文为主，企业级 | — |
+| 学习成本 | 低 | 低 | 中 | 低（但工作量大） |
+
+#### 2.4.3 框架选型建议
+
+| 场景 | 推荐方案 | 理由 |
+|------|---------|------|
+| A 是 Vue 技术栈，追求开发效率 | **Wujie** | Vue 官方组件开箱即用，中文社区活跃，跨域降级后仍保留框架能力 |
+| 更看重跨域稳定性和可预测性 | **Luigi** | 纯 iframe 架构，不存在降级问题，企业级验证 |
+| 只嵌入 2-3 个简单展示模块 | **手写 iframe** | 引入框架的 ROI 不高，本文档第四章的工程优化方案已足够 |
+
 ---
 
 ## 三、架构设计
