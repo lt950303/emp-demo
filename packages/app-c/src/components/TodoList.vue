@@ -50,6 +50,19 @@
         Clear done
       </button>
     </div>
+
+    <el-dialog
+      title="确认添加"
+      :visible.sync="confirmVisible"
+      width="360px"
+      :close-on-click-modal="false"
+    >
+      <span>确认添加「{{ pendingTodo }}」？</span>
+      <span slot="footer">
+        <el-button @click="cancelAdd">取 消</el-button>
+        <el-button type="primary" @click="confirmAdd">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -65,6 +78,8 @@ export default {
       filter: 'all',
       editingId: null,
       editText: '',
+      confirmVisible: false,
+      pendingTodo: '',
       filters: [
         { label: 'All', value: 'all' },
         { label: 'Active', value: 'active' },
@@ -86,8 +101,18 @@ export default {
     addTodo() {
       const text = this.newTodo.trim()
       if (!text) return
-      this.todos.push({ id: nextId++, text, done: false })
+      this.pendingTodo = text
+      this.confirmVisible = true
+    },
+    confirmAdd() {
+      this.todos.push({ id: nextId++, text: this.pendingTodo, done: false })
       this.newTodo = ''
+      this.pendingTodo = ''
+      this.confirmVisible = false
+    },
+    cancelAdd() {
+      this.pendingTodo = ''
+      this.confirmVisible = false
     },
     removeTodo(id) {
       this.todos = this.todos.filter(t => t.id !== id)
