@@ -1,0 +1,22 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - heading "EMP 2.4 Dynamic Version Switch Demo" [level=2] [ref=e4]
+    - navigation [ref=e5]:
+      - link "Home" [ref=e6] [cursor=pointer]:
+        - /url: "#/"
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - heading "Remote Module Version Control" [level=3] [ref=e9]
+      - paragraph [ref=e10]: Switch between different versions of the TodoList remote component at runtime.
+      - generic [ref=e11]:
+        - radiogroup [ref=e12]:
+          - radio "v1 - Basic (port 8002)" [ref=e13]:
+            - radio "v1 - Basic (port 8002)" [ref=e14]
+            - generic [ref=e15] [cursor=pointer]: v1 - Basic (port 8002)
+          - radio "v2 - Enhanced (port 8003)" [checked] [ref=e16]:
+            - radio "v2 - Enhanced (port 8003)" [checked] [active] [ref=e17]
+            - generic [ref=e18] [cursor=pointer]: v2 - Enhanced (port 8003)
+        - generic [ref=e19]: Error
+    - alert [ref=e29]:
+      - generic [ref=e30]: 
+      - generic [ref=e31]: "Failed to load v2: Cannot delete property 'appC' of #<Window> "

@@ -1,0 +1,39 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - heading "EMP 2.4 Dynamic Version Switch Demo" [level=2] [ref=e4]
+    - navigation [ref=e5]:
+      - link "Home" [ref=e6] [cursor=pointer]:
+        - /url: "#/"
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - heading "Remote Module Version Control" [level=3] [ref=e9]
+      - paragraph [ref=e10]: Switch between different versions of the TodoList remote component at runtime.
+      - generic [ref=e11]:
+        - radiogroup [ref=e12]:
+          - radio "v1 - Basic (port 8002)" [ref=e13]:
+            - radio "v1 - Basic (port 8002)" [ref=e14]
+            - generic [ref=e15] [cursor=pointer]: v1 - Basic (port 8002)
+          - radio "v2 - Enhanced (port 8003)" [checked] [ref=e16]:
+            - radio "v2 - Enhanced (port 8003)" [checked] [active] [ref=e17]
+            - generic [ref=e18] [cursor=pointer]: v2 - Enhanced (port 8003)
+        - generic [ref=e19]: Running v2
+    - generic [ref=e28]:
+      - heading "📝 Todo List v2 - Enhanced" [level=3] [ref=e29]:
+        - text: 📝 Todo List
+        - generic [ref=e30]: v2 - Enhanced
+      - generic [ref=e32]:
+        - textbox "Add a new todo..." [ref=e33]
+        - button " Add" [ref=e35] [cursor=pointer]:
+          - generic [ref=e36]: 
+          - text: Add
+      - radiogroup [ref=e38]:
+        - radio "All" [checked] [ref=e39]:
+          - radio "All" [checked] [ref=e40]
+          - generic [ref=e41] [cursor=pointer]: All
+        - radio "Active" [ref=e42]:
+          - radio "Active" [ref=e43]
+          - generic [ref=e44] [cursor=pointer]: Active
+        - radio "Done" [ref=e45]:
+          - radio "Done" [ref=e46]
+          - generic [ref=e47] [cursor=pointer]: Done
+      - paragraph [ref=e48]: No todos yet.

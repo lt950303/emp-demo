@@ -153,3 +153,13 @@ window.ELEMENT = ElementUI
 **原理**：EMP SDK 提供 `EMP_SHARE_RUNTIME`（federation runtime 层），npm → window 桥接提供框架全局变量。这样 app-c 的 `emp.js` 执行时能找到所有依赖，不需要从 CDN 重复加载 Vue 等库。
 
 **结论**：非 EMP 应用消费 EMP Remote **不能开箱即用**，必须手动桥接 EMP SDK 和共享依赖的全局变量。这是 EMP 在标准 Module Federation 之上增加的 CDN 外部化层导致的额外耦合。
+
+## 本地源码参考
+
+仓库内包含 3 个上游源码，用于辅助方案分析：
+
+| 源码 | 本地路径 | 说明 |
+|------|----------|------|
+| Module Federation (core) | `./core-main/` | module-federation/core 主仓库 |
+| EMP 2.4.5 | `./emp-2.4.5/` | EMP 框架源码（emp-workspace） |
+| Webpack 5.106.2 | `./webpack-main/` | webpack 主仓库源码 |
