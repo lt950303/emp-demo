@@ -44,7 +44,7 @@ importers:
         version: 2.4.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(browserslist@4.28.2)(eslint@8.57.1)(sass-embedded@1.93.2)(type-fest@0.21.3)(vue-template-compiler@2.7.16)
       '@efox/plugin-vue-2':
         specifier: 1.1.2
-        version: 1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2)
+        version: 1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)
 
   packages/app-a-v3:
     dependencies:
@@ -60,7 +60,72 @@ importers:
         version: 2.4.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(browserslist@4.28.2)(eslint@8.57.1)(sass-embedded@1.93.2)(type-fest@0.21.3)(vue-template-compiler@2.7.16)
       '@efox/plugin-vue-2':
         specifier: 1.1.2
-        version: 1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2)
+        version: 1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)
+
+  packages/app-a-v4:
+    dependencies:
+      vue:
+        specifier: ^2.7.14
+        version: 2.7.16
+      vue-router:
+        specifier: '3'
+        version: 3.6.5(vue@2.7.16)
+      vuex:
+        specifier: '3'
+        version: 3.6.2(vue@2.7.16)
+    devDependencies:
+      '@empjs/cli':
+        specifier: ^3.1.11
+        version: 3.12.4(less@4.6.4)(sass@1.99.0)(tslib@2.8.1)(typescript@5.9.3)(vue@2.7.16)(webpack@5.106.2)
+      '@empjs/plugin-vue2':
+        specifier: ^3.0.0
+        version: 3.10.0(@babel/core@7.29.0)(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)
+      '@empjs/share':
+        specifier: ^3.1.10
+        version: 3.13.8(@rspack/core@1.7.4(@swc/helpers@0.5.21))(typescript@5.9.3)
+
+  packages/app-a-v5-wujie-mf:
+    dependencies:
+      element-ui:
+        specifier: ^2.15.14
+        version: 2.15.14(vue@2.7.16)
+      vue:
+        specifier: ^2.7.14
+        version: 2.7.16
+      vue-router:
+        specifier: '3'
+        version: 3.6.5(vue@2.7.16)
+      vuex:
+        specifier: '3'
+        version: 3.6.2(vue@2.7.16)
+      wujie:
+        specifier: ^1.0.29
+        version: 1.0.29
+      wujie-vue2:
+        specifier: ^1.0.25
+        version: 1.0.29(vue@2.7.16)
+    devDependencies:
+      '@rspack/cli':
+        specifier: 1.7.4
+        version: 1.7.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(webpack@5.106.2)
+      '@rspack/core':
+        specifier: 1.7.4
+        version: 1.7.4(@swc/helpers@0.5.21)
+      css-loader:
+        specifier: ^7.1.2
+        version: 7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2)
+      sass-embedded:
+        specifier: ^1.80.0
+        version: 1.93.2
+      sass-loader:
+        specifier: ^16.0.0
+        version: 16.0.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(sass-embedded@1.93.2)(sass@1.99.0)(webpack@5.106.2)
+      vue-loader:
+        specifier: 15.11.0
+        version: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2)
+      vue-style-loader:
+        specifier: ^4.1.3
+        version: 4.1.3
 
   packages/app-b:
     dependencies:
@@ -114,7 +179,7 @@ importers:
         version: 2.4.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(browserslist@4.28.2)(eslint@8.57.1)(sass-embedded@1.93.2)(type-fest@0.21.3)(vue-template-compiler@2.7.16)
       '@efox/plugin-vue-2':
         specifier: 1.1.2
-        version: 1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2)
+        version: 1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)
 
   packages/app-c-v2:
     dependencies:
@@ -127,7 +192,45 @@ importers:
         version: 2.4.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(browserslist@4.28.2)(eslint@8.57.1)(sass-embedded@1.93.2)(type-fest@0.21.3)(vue-template-compiler@2.7.16)
       '@efox/plugin-vue-2':
         specifier: 1.1.2
-        version: 1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2)
+        version: 1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)
+
+  packages/app-c-v3:
+    dependencies:
+      vue:
+        specifier: ^2.7.14
+        version: 2.7.16
+      vuex:
+        specifier: '3'
+        version: 3.6.2(vue@2.7.16)
+    devDependencies:
+      '@empjs/cli':
+        specifier: ^3.1.11
+        version: 3.12.4(less@4.6.4)(sass@1.99.0)(tslib@2.8.1)(typescript@5.9.3)(vue@2.7.16)(webpack@5.106.2)
+      '@empjs/plugin-vue2':
+        specifier: ^3.0.0
+        version: 3.10.0(@babel/core@7.29.0)(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)
+      '@empjs/share':
+        specifier: ^3.1.10
+        version: 3.13.8(@rspack/core@1.7.4(@swc/helpers@0.5.21))(typescript@5.9.3)
+
+  packages/app-c-v4:
+    dependencies:
+      vue:
+        specifier: ^2.7.14
+        version: 2.7.16
+      vuex:
+        specifier: '3'
+        version: 3.6.2(vue@2.7.16)
+    devDependencies:
+      '@empjs/cli':
+        specifier: ^3.1.11
+        version: 3.12.4(less@4.6.4)(sass@1.99.0)(tslib@2.8.1)(typescript@5.9.3)(vue@2.7.16)(webpack@5.106.2)
+      '@empjs/plugin-vue2':
+        specifier: ^3.0.0
+        version: 3.10.0(@babel/core@7.29.0)(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)
+      '@empjs/share':
+        specifier: ^3.1.10
+        version: 3.13.8(@rspack/core@1.7.4(@swc/helpers@0.5.21))(typescript@5.9.3)
 
   packages/app-d:
     dependencies:
@@ -149,7 +252,7 @@ importers:
         version: 0.8.12(@rspack/core@1.7.4(@swc/helpers@0.5.21))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.9.3)(webpack@5.106.2)
       '@rspack/cli':
         specifier: 1.7.4
-        version: 1.7.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(tslib@2.8.1)(webpack@5.106.2)
+        version: 1.7.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(webpack@5.106.2)
       '@rspack/core':
         specifier: 1.7.4
         version: 1.7.4(@swc/helpers@0.5.21)
@@ -164,7 +267,7 @@ importers:
         version: 16.0.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(sass-embedded@1.93.2)(sass@1.99.0)(webpack@5.106.2)
       vue-loader:
         specifier: 15.11.0
-        version: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(vue-template-compiler@2.7.16)(webpack@5.106.2)
+        version: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2)
       vue-style-loader:
         specifier: ^4.1.3
         version: 4.1.3
@@ -189,7 +292,7 @@ importers:
     devDependencies:
       '@rspack/cli':
         specifier: 1.7.4
-        version: 1.7.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(tslib@2.8.1)(webpack@5.106.2)
+        version: 1.7.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(webpack@5.106.2)
       '@rspack/core':
         specifier: 1.7.4
         version: 1.7.4(@swc/helpers@0.5.21)
@@ -204,7 +307,7 @@ importers:
         version: 16.0.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(sass-embedded@1.93.2)(sass@1.99.0)(webpack@5.106.2)
       vue-loader:
         specifier: 15.11.0
-        version: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(vue-template-compiler@2.7.16)(webpack@5.106.2)
+        version: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2)
       vue-style-loader:
         specifier: ^4.1.3
         version: 4.1.3
@@ -7871,10 +7974,10 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@efox/plugin-vue-2@1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2)':
+  '@efox/plugin-vue-2@1.1.2(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)':
     dependencies:
       vue: 2.7.16
-      vue-loader: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(vue-template-compiler@2.7.16)(webpack@5.106.2)
+      vue-loader: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(vue-template-compiler@2.7.16)(webpack@5.106.2)
       vue-svg-inline-loader: 2.1.5
       vue-svg-loader: 0.16.0(vue-template-compiler@2.7.16)
       vue-template-compiler: 2.7.16
@@ -8053,7 +8156,7 @@ snapshots:
       '@vue/babel-preset-jsx': 1.4.0(@babel/core@7.29.0)(vue@2.7.14)
       babel-loader: 9.1.3(@babel/core@7.29.0)(webpack@5.106.2)
       vue: 2.7.14
-      vue-loader: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2)
+      vue-loader: 15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(vue-template-compiler@2.7.16)(webpack@5.106.2)
       vue-svg-inline-loader: 2.1.5
     transitivePeerDependencies:
       - '@babel/core'
@@ -8836,11 +8939,11 @@ snapshots:
       '@rspack/binding-win32-ia32-msvc': 1.7.4
       '@rspack/binding-win32-x64-msvc': 1.7.4
 
-  '@rspack/cli@1.7.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(tslib@2.8.1)(webpack@5.106.2)':
+  '@rspack/cli@1.7.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(webpack@5.106.2)':
     dependencies:
       '@discoveryjs/json-ext': 0.5.7
       '@rspack/core': 1.7.4(@swc/helpers@0.5.21)
-      '@rspack/dev-server': 1.1.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(tslib@2.8.1)(webpack@5.106.2)
+      '@rspack/dev-server': 1.1.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(webpack@5.106.2)
       exit-hook: 4.0.0
       webpack-bundle-analyzer: 4.10.2
     transitivePeerDependencies:
@@ -8861,13 +8964,13 @@ snapshots:
     optionalDependencies:
       '@swc/helpers': 0.5.21
 
-  '@rspack/dev-server@1.1.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(tslib@2.8.1)(webpack@5.106.2)':
+  '@rspack/dev-server@1.1.5(@rspack/core@1.7.4(@swc/helpers@0.5.21))(@types/express@4.17.25)(webpack@5.106.2)':
     dependencies:
       '@rspack/core': 1.7.4(@swc/helpers@0.5.21)
       chokidar: 3.6.0
       http-proxy-middleware: 2.0.9(@types/express@4.17.25)
       p-retry: 6.2.1
-      webpack-dev-server: 5.2.2(tslib@2.8.1)(webpack@5.106.2)
+      webpack-dev-server: 5.2.2(webpack@5.106.2)
       ws: 8.20.0
     transitivePeerDependencies:
       - '@types/express'
@@ -13556,7 +13659,7 @@ snapshots:
 
   vue-hot-reload-api@2.3.4: {}
 
-  vue-loader@15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(vue-template-compiler@2.7.16)(webpack@5.106.2):
+  vue-loader@15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(webpack@5.106.2):
     dependencies:
       '@vue/component-compiler-utils': 3.3.0(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       css-loader: 7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2)
@@ -13565,8 +13668,6 @@ snapshots:
       vue-hot-reload-api: 2.3.4
       vue-style-loader: 4.1.3
       webpack: 5.106.2
-    optionalDependencies:
-      vue-template-compiler: 2.7.16
     transitivePeerDependencies:
       - arc-templates
       - atpl
@@ -13622,7 +13723,7 @@ snapshots:
       - walrus
       - whiskers
 
-  vue-loader@15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(webpack@5.106.2):
+  vue-loader@15.11.0(css-loader@7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2))(vue-template-compiler@2.7.16)(webpack@5.106.2):
     dependencies:
       '@vue/component-compiler-utils': 3.3.0(lodash@4.18.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       css-loader: 7.1.4(@rspack/core@1.7.4(@swc/helpers@0.5.21))(webpack@5.106.2)
@@ -13631,6 +13732,8 @@ snapshots:
       vue-hot-reload-api: 2.3.4
       vue-style-loader: 4.1.3
       webpack: 5.106.2
+    optionalDependencies:
+      vue-template-compiler: 2.7.16
     transitivePeerDependencies:
       - arc-templates
       - atpl
@@ -13826,7 +13929,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  webpack-dev-server@5.2.2(tslib@2.8.1)(webpack@5.106.2):
+  webpack-dev-server@5.2.2(webpack@5.106.2):
     dependencies:
       '@types/bonjour': 3.5.13
       '@types/connect-history-api-fallback': 1.5.4
