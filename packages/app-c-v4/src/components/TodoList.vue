@@ -16,7 +16,7 @@
         @keyup.enter.native="addTodo"
         size="medium"
       />
-      <el-select v-model="newPriority" size="medium" style="width: 120px" :popper-append-to-body="false">
+      <el-select v-model="newPriority" size="medium" style="width: 120px">
         <el-option label="Low" value="low" />
         <el-option label="Medium" value="medium" />
         <el-option label="High" value="high" />
